@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// A group of HierarchyIconOverlays, used to organize configs
 /// </summary>
-[CreateAssetMenu(menuName = "MushiTools/Hierarchy Overlays/Icons/Overlay Group")]
+[CreateAssetMenu(menuName = "MushiStuff/MushiEditorTools/Hierarchy Overlays/Icons/Overlay Group")]
 public class HierarchyIconOverlayGroupSO : ScriptableObject
 {
     public List<HierarchyIconStringTargetSO> stringTargetIcons;

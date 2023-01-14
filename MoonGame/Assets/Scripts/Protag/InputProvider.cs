@@ -5,19 +5,26 @@ using UnityEngine;
 
 public class InputProvider : MonoBehaviour
 {
-    private Vector2 horizontalMovementRaw;
+    // Fields
+    private Vector2 horizontalMovementNormalized;
     private bool isJumpHeld;
     
+    private Vector2 mouseDelta;
     
-    public Vector2 HorizontalMovementRaw => horizontalMovementRaw;
+    // Properties
+    public Vector2 HorizontalMovementNormalized => horizontalMovementNormalized;
     public bool IsJumpHeld => isJumpHeld;
-    public Action OnJumpPressed;
+    public Vector2 MouseDelta => mouseDelta;
     
+    // Events
+    public Action OnJumpPressed;
+
     void Update()
     {
-        horizontalMovementRaw = new Vector2(
+        // Movement
+        horizontalMovementNormalized = new Vector2(
             Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical"));
+            Input.GetAxisRaw("Vertical")).normalized;
 
         isJumpHeld = Input.GetKey(KeyCode.Space);
 
@@ -25,5 +32,10 @@ public class InputProvider : MonoBehaviour
         {
             OnJumpPressed?.Invoke();
         }
+
+        // Mouse
+        mouseDelta = new Vector2(
+            Input.GetAxisRaw("Mouse X"),
+            Input.GetAxisRaw("Mouse Y"));
     }
 }

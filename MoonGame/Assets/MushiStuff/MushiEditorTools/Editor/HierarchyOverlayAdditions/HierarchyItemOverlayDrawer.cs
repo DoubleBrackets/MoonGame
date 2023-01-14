@@ -214,6 +214,8 @@ public class HierarchyItemOverlayDrawer
 
                 foreach (var monoScriptIcon in iconOverlayGroup.monoScriptTargetIcons)
                 {
+                    if (monoScriptIcon == null) continue;
+                    
                     classReferenceType = monoScriptIcon.targetClass.GetClass();
 
                     if (!classReferenceType.IsClass) continue;

@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// Contains the color header color settings. Only one should be active at a time 
 /// </summary>
-[CreateAssetMenu(menuName = "MushiTools/Attributes/ColorHeaderConfig")]
+[CreateAssetMenu(menuName = "MushiStuff/MushiEditorCore/Attributes/ColorHeaderConfig")]
 public class ColorHeaderConfigSO : SingleActiveConfigSO
 {
     public Color[] headerColors;
