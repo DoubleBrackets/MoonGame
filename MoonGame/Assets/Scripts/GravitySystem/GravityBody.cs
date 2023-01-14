@@ -13,7 +13,7 @@ public class GravityBody : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GravityDirection = source.transform.position - targetRb.position;
+        GravityDirection = (source.transform.position - targetRb.position).normalized;
         targetRb.AddForce(GravityDirection.normalized * gravityAccel, ForceMode.Acceleration);
     }
 }

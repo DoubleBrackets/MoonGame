@@ -20,8 +20,6 @@ public class FPCameraController : MonoBehaviour
     private Matrix4x4 camLocalRotMtx;
     private Matrix4x4 finalRotMtx;
 
-    public Vector3 Forward => targetCam.forward;
-
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -47,8 +45,7 @@ public class FPCameraController : MonoBehaviour
         // Rotations are relative to global axis, convert to separate quats
         var xRotQuat = Quaternion.Euler(xRot, 0, 0);
         var yRotQuat = Quaternion.Euler(0, yRot, 0);
-        
-        
+
         // Local rotation is in anchor transform's coords, change basis to world
         camLocalRotMtx = Matrix4x4.Rotate(yRotQuat) * Matrix4x4.Rotate(xRotQuat);
 
@@ -59,9 +56,15 @@ public class FPCameraController : MonoBehaviour
         targetCam.position = transformAnchor.position;
     }
 
+    public Vector2 TransformInput(Vector2 input)
+    {
+        Quaternion rot = Quaternion.Euler(0, 0, -yRot);
+        return rot * input;
+    }
+
     private void OnDrawGizmos()
     {
-        /*if(finalRotMtx != default)
-            finalRotMtx.DrawMtxGizmo(transformAnchor.position);*/
+        if(finalRotMtx != default)
+            finalRotMtx.DrawMtxGizmo(transformAnchor.position);
     }
 }

@@ -16,5 +16,5 @@ MonoBehaviour:
   groundedAcceleration: 20
   groundedFriction: 25
   jumpVelocity: 5
-  groundedRightingSpeed: 0
-  airborneRightingSpeed: 0
+  groundedRightingSpeed: 5
+  airborneRightingSpeed: 5

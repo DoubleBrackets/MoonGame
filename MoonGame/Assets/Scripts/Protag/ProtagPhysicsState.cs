@@ -7,8 +7,7 @@ public class ProtagPhysicsState : MonoBehaviour
 {
     [ColorHeader("Dependencies")] 
     [SerializeField] private GravityBody playerGravBody;
-    [SerializeField] private FPCameraController cameraController;
-    [SerializeField] private GameObject playerPhysicsBody;
+    [SerializeField] private Transform playerPhysicsBody;
     
     [ColorHeader("Grounded Cast Config")]
     [SerializeField] private LayerMask groundedMask;
@@ -28,9 +27,10 @@ public class ProtagPhysicsState : MonoBehaviour
     private Vector3 orientationY;
     private Vector3 orientationX;
     private Vector3 orientationZ;
-    private Matrix4x4 orientationMtx;
+    private Matrix4x4 orientationMtx = Matrix4x4.identity;
 
     public Matrix4x4 OrientationMtx => orientationMtx;
+    public Vector3 OrientationNormal => orientationY;
 
     private void FixedUpdate()
     {
@@ -38,10 +38,10 @@ public class ProtagPhysicsState : MonoBehaviour
         UpdateOrientationBasis();
     }
 
-    // Generate a basis vector/matrix based on camera forward and current active normal
+    // Generate Orientation information based on some normal (ground or gravity)
     private void UpdateOrientationBasis()
     {
-        // Basis 'Up'
+        // Choose up based on whether the controller is airborne or not
         Vector3 normal;
         if (isGrounded)
         {
@@ -52,7 +52,8 @@ public class ProtagPhysicsState : MonoBehaviour
             normal = -playerGravBody.GravityDirection;
         }
 
-        Vector3 forward = cameraController.Forward;
+        // Orthonormalize
+        Vector3 forward = playerPhysicsBody.forward;
         // Basis 'Right'
         Vector3 tangent = Vector3.Cross(normal, forward).normalized;
         // Basis 'Forward'
@@ -86,7 +87,7 @@ public class ProtagPhysicsState : MonoBehaviour
         }
     }
 
-    public Vector3 ProjectOntoOrienationGround(Vector3 vec)
+    public Vector3 ProjectOnOrienationGround(Vector3 vec)
     {
         return Vector3.ProjectOnPlane(vec, orientationY);
     }

@@ -152,7 +152,7 @@ public class Protag : MonoBehaviour
 
     public void WalkFixedUpdate()
     {
-        Vector2 input = inputProvider.HorizontalMovementNormalized;
+        Vector2 input = protagFPCam.TransformInput(inputProvider.HorizontalMovementNormalized);
         float timeStep = Time.fixedDeltaTime;
         protagMover.GroundedMoveTowards(input, timeStep);
         protagMover.GroundedSnap();

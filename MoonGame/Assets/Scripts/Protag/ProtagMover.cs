@@ -15,7 +15,7 @@ public class ProtagMover : MonoBehaviour
 
         // We only want to move along the ground plane, so use projects to calculate how much to move
         Vector3 cVel = rigidBody.velocity;
-        Vector3 groundedVel = physicsState.ProjectOntoOrienationGround(cVel);
+        Vector3 groundedVel = physicsState.ProjectOnOrienationGround(cVel);
         Vector3 targetVel = physicsState.OrientationMtx.MultiplyVector(inputDirection.SwizzleXZ()).normalized * movementProfile.maxGroundedSpeed;
 
         Vector3 newVel = Vector3.MoveTowards(groundedVel, targetVel, timeStep * movementProfile.groundedAcceleration);
@@ -28,7 +28,7 @@ public class ProtagMover : MonoBehaviour
     public void GroundedFriction(float timeStep)
     {
         Vector3 cVel = rigidBody.velocity;
-        Vector3 groundedVel = physicsState.ProjectOntoOrienationGround(cVel);
+        Vector3 groundedVel = physicsState.ProjectOnOrienationGround(cVel);
 
         Vector3 newVel = Vector3.MoveTowards(groundedVel, Vector3.zero, timeStep * movementProfile.groundedFriction);
 
@@ -47,7 +47,7 @@ public class ProtagMover : MonoBehaviour
         if (dot > 0.15f)
         {
             // snap
-            rigidBody.velocity = physicsState.ProjectOntoOrienationGround(vel);
+            rigidBody.velocity = physicsState.ProjectOnOrienationGround(vel);
         }
     }
     

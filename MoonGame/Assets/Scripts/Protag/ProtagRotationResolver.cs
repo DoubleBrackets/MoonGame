@@ -12,16 +12,19 @@ public class ProtagRotationResolver : MonoBehaviour
 
     public void GroundedRotationResolve(float timeStep)
     {
-        var cRot = targetPhysicsBody.rotation;
-        var targetRot = physicsState.OrientationMtx.rotation;
-        targetPhysicsBody.rotation = Quaternion.Lerp(cRot, targetRot, movementProfile.groundedRightingSpeed * timeStep);
+        LerpToOrientation(movementProfile.groundedRightingSpeed * timeStep);
     }
 
     public void AirborneRotationResolve(float timeStep)
     {
+        LerpToOrientation(movementProfile.groundedRightingSpeed * timeStep);
+    }
+
+    private void LerpToOrientation(float amount)
+    {
         var cRot = targetPhysicsBody.rotation;
         var targetRot = physicsState.OrientationMtx.rotation;
-        targetPhysicsBody.rotation = Quaternion.Lerp(cRot, targetRot, movementProfile.airborneRightingSpeed * timeStep);
+        targetPhysicsBody.rotation = Quaternion.Lerp(cRot, targetRot, amount);
     }
     
 }
