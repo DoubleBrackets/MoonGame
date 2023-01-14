@@ -20,6 +20,8 @@ public class FPCameraController : MonoBehaviour
     private Matrix4x4 camLocalRotMtx;
     private Matrix4x4 finalRotMtx;
 
+    public Vector3 Forward => targetCam.forward;
+
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;

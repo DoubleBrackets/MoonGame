@@ -10,21 +10,30 @@ public class ProtagRotationResolver : MonoBehaviour
     [SerializeField] private MovementProfileSO movementProfile;
 
 
-    public void GroundedRotationResolve(float timeStep)
+    public void GroundedRotationResolve(float timeStep, float gravityAccelMag)
     {
         LerpToOrientation(movementProfile.groundedRightingSpeed * timeStep);
     }
 
-    public void AirborneRotationResolve(float timeStep)
+    public void AirborneRotationResolve(float timeStep, float gravityAccelMag)
     {
-        LerpToOrientation(movementProfile.groundedRightingSpeed * timeStep);
+        float t = Mathf.InverseLerp(
+            movementProfile.airborneRightingGravityScaleRange.x,
+            movementProfile.airborneRightingGravityScaleRange.y,
+            gravityAccelMag);
+
+        float rightingSpeed = movementProfile.airborneRightingSpeed *
+                      movementProfile.airborneRightingGravityScaleCurve.Evaluate(t);
+        
+        LerpToOrientation(rightingSpeed * timeStep);
     }
 
     private void LerpToOrientation(float amount)
     {
         var cRot = targetPhysicsBody.rotation;
         var targetRot = physicsState.OrientationMtx.rotation;
-        targetPhysicsBody.rotation = Quaternion.Lerp(cRot, targetRot, amount);
+        cRot = Quaternion.Lerp(cRot, targetRot, amount);
+        targetPhysicsBody.rotation = Quaternion.RotateTowards(cRot, targetRot, amount * 10f);
     }
     
 }

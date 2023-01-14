@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravitySource : MonoBehaviour
+public abstract class GravitySource : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [ColorHeader("Invoking - Ask Link/Unlink to gravity body Channels", ColorHeaderColor.TriggeringEvents)] 
+    [SerializeField] protected GravityBodySourceLinkEventChannelSO askLinkGravityBody;
+    [SerializeField] protected GravityBodySourceLinkEventChannelSO askUnlinkGravityBody;
+
+    [ColorHeader("Invoking - Ask Add/Remove Source Channels", ColorHeaderColor.TriggeringEvents)] 
+    [SerializeField] protected GravitySourceEventChannelSO askAddGravitySource;
+    [SerializeField] protected GravitySourceEventChannelSO askRemoveGravitySource;
+
+    protected void OnEnable()
     {
-        
+        askAddGravitySource.Raise(this);
+        gameObject.layer = 8;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnDisable()
     {
-        
+        askRemoveGravitySource.Raise(this);
     }
+
+    public abstract Vector3 CalculateAcceleration(GravityBody body);
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   monoScriptTargetIcons:
   - {fileID: 11400000, guid: 26166d0d2e7ef2c4495c559d38368d2a, type: 2}
   - {fileID: 11400000, guid: 13a9d878cd25da041ab8dc8c4370341c, type: 2}
+  - {fileID: 11400000, guid: 0a032355bcb3ba64aa7a23a59cc4c889, type: 2}

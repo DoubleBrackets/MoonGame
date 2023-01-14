@@ -12,8 +12,18 @@ public class MovementProfileSO : ScriptableObject
 
     [ColorHeader("Airborne Stats")] 
     public float jumpVelocity;
+    public float maxAirSpeed;
+    public float airAcceleration;
+
+    [ColorHeader("Jetpack Stats")] 
+    public float jetpackAccel;
+    public float jetpackMaxFuel;
+    public float jetpackFuelRegen;
 
     [ColorHeader("Rotation Righting Stats")]
     public float groundedRightingSpeed;
     public float airborneRightingSpeed;
+    [RangeSlider(0f, 100f)] public Vector2 airborneRightingGravityScaleRange;
+    public AnimationCurve airborneRightingGravityScaleCurve;
+
 }

@@ -16,5 +16,35 @@ MonoBehaviour:
   groundedAcceleration: 20
   groundedFriction: 25
   jumpVelocity: 5
-  groundedRightingSpeed: 5
-  airborneRightingSpeed: 5
+  maxAirSpeed: 5.5
+  airAcceleration: 0
+  jetpackAccel: 4
+  jetpackMaxFuel: 5
+  jetpackFuelRegen: 0.25
+  groundedRightingSpeed: 1.4
+  airborneRightingSpeed: 3
+  airborneRightingGravityScaleRange: {x: 0, y: 6}
+  airborneRightingGravityScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -22,19 +22,29 @@ public class Protag : MonoBehaviour
 
     [ColorHeader("Movement Dependencies")] 
     [SerializeField] private ProtagPhysicsState physicsState;
-    [SerializeField] private ProtagMover protagMover;
+    [SerializeField] private ProtagMovementController protagMovementController;
     [SerializeField] private ProtagRotationResolver rotationResolver;
+
+    [ColorHeader("Invoking - Various Effects Channels", ColorHeaderColor.TriggeringEvents)]
+    [SerializeField] private ImpulseEffectEventChannelSO askStartCameraImpulse;
 
     [ColorHeader("Debug Fields")]
     [ReadOnly, SerializeField] private ProtagState currentState;
-    
+
     // private fields
     private QStateMachine stateMachine;
+    
+    public Vector2 transformedHInput => protagFPCam.TransformInput(inputProvider.HorizontalMovementNormalized);
     
     private void OnEnable()
     {
         stateMachine = new QStateMachine((int)ProtagState.Idle);
         AddStates();
+    }
+
+    private void OnDisable()
+    {
+        stateMachine.ExitStateMachine();
     }
 
     private void Update()
@@ -114,8 +124,8 @@ public class Protag : MonoBehaviour
     public void IdleFixedUpdate()
     {
         float timeStep = Time.fixedDeltaTime;
-        protagMover.GroundedFriction(timeStep);
-        rotationResolver.GroundedRotationResolve(timeStep);
+        protagMovementController.GroundedFriction(timeStep);
+        rotationResolver.GroundedRotationResolve(timeStep, physicsState.GravityAccelMag);
     }
 
     public void IdleEnterState()
@@ -145,22 +155,35 @@ public class Protag : MonoBehaviour
     #endregion
 
     #region Walk State
+
+    private float walkImpulseTimer = 0f;
+    private bool footstepAlternate = false;
+    
     public void WalkUpdate()
     {
-        
+        if (Time.time - walkImpulseTimer > 1.35f)
+        {
+            askStartCameraImpulse.Raise(footstepAlternate ?
+                CameraImpulseManager.ImpulseEffect.Footstep1 :
+                CameraImpulseManager.ImpulseEffect.Footstep2, 1f);
+
+            footstepAlternate = !footstepAlternate;
+            walkImpulseTimer = Time.time;
+        }
     }
 
     public void WalkFixedUpdate()
     {
-        Vector2 input = protagFPCam.TransformInput(inputProvider.HorizontalMovementNormalized);
+        Vector2 input = transformedHInput;
         float timeStep = Time.fixedDeltaTime;
-        protagMover.GroundedMoveTowards(input, timeStep);
-        protagMover.GroundedSnap();
-        rotationResolver.GroundedRotationResolve(timeStep);
+        protagMovementController.GroundedMoveTowards(input, timeStep);
+        protagMovementController.GroundedSnap();
+        rotationResolver.GroundedRotationResolve(timeStep, physicsState.GravityAccelMag);
     }
 
     public void WalkEnterState()
     {
+        walkImpulseTimer = Time.time;
         inputProvider.OnJumpPressed += EnterJump;
     }
 
@@ -202,14 +225,13 @@ public class Protag : MonoBehaviour
 
     public void JumpFixedUpdate()
     {
-        float timeStep = Time.fixedDeltaTime;
-        rotationResolver.AirborneRotationResolve(timeStep);
+        AirborneFixedUpdate();
     }
 
     public void JumpEnterState()
     {
         jumpStateTime = Time.time;
-        protagMover.Jump();
+        protagMovementController.Jump();
     }
 
     public void JumpExitState()
@@ -220,11 +242,12 @@ public class Protag : MonoBehaviour
     public int JumpSwitchState()
     {
         // Prevent instantly being grounded when jumping
-        if (Time.time - jumpStateTime < 0.2f) 
+        if (Time.time - jumpStateTime < 0.25f) 
             return -1;
         
         if (physicsState.IsGrounded)
         {
+            askStartCameraImpulse.Raise(CameraImpulseManager.ImpulseEffect.Landing, 1f);
             return (int)ProtagState.Idle;
         }
         else
@@ -244,8 +267,10 @@ public class Protag : MonoBehaviour
 
     public void AirborneFixedUpdate()
     {
+        Vector2 input = transformedHInput;
         float timeStep = Time.fixedDeltaTime;
-        rotationResolver.AirborneRotationResolve(timeStep);
+        rotationResolver.AirborneRotationResolve(timeStep, physicsState.GravityAccelMag);
+        protagMovementController.AirborneMoveTowards(input, timeStep);
     }
 
     public void AirborneEnterState()
@@ -262,7 +287,13 @@ public class Protag : MonoBehaviour
     {
         if (physicsState.IsGrounded)
         {
+            askStartCameraImpulse.Raise(CameraImpulseManager.ImpulseEffect.Landing, 1f);
             return (int)ProtagState.Idle;
+        }
+
+        if (inputProvider.IsJumpHeld)
+        {
+            return (int)ProtagState.Jetpack;
         }
         
         return -1;
@@ -272,19 +303,25 @@ public class Protag : MonoBehaviour
 
     #region Jetpack State
 
+    private float shakeTimer;
+
     public void JetpackUpdate()
     {
-
+        if (Time.time - shakeTimer >= 0.05f)
+        {
+            shakeTimer = Time.time;
+            askStartCameraImpulse.Raise(CameraImpulseManager.ImpulseEffect.JetpackShake, 1f);
+        }
     }
 
     public void JetpackFixedUpdate()
     {
-
+        protagMovementController.JetpackMovement(protagFPCam.Forward, Time.fixedDeltaTime);
     }
 
     public void JetpackEnterState()
     {
-
+        shakeTimer = Time.time;
     }
 
     public void JetpackExitState()
@@ -294,6 +331,15 @@ public class Protag : MonoBehaviour
 
     public int JetpackSwitchState()
     {
+        if (physicsState.IsGrounded)
+        {
+            askStartCameraImpulse.Raise(CameraImpulseManager.ImpulseEffect.Landing, 1f);
+            return (int)ProtagState.Idle;
+        }
+        if (!inputProvider.IsJumpHeld)
+        {
+            return (int)ProtagState.Airborne;
+        }
         return -1;
     }
 

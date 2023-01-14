@@ -9,6 +9,11 @@ public static class ExtensionMethods
         return new Vector3(vec.x, 0, vec.y);
     }
 
+    public static Vector3 WorldPos(this SphereCollider coll)
+    {
+        return coll.transform.localToWorldMatrix.MultiplyPoint(coll.center);
+    }
+
     public static void DrawMtxGizmo(this Matrix4x4 mtx)
     {
         var forwardZ = mtx.MultiplyVector(Vector3.forward).normalized;

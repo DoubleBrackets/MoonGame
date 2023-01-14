@@ -9,25 +9,27 @@ public class ProtagPhysicsState : MonoBehaviour
     [SerializeField] private GravityBody playerGravBody;
     [SerializeField] private Transform playerPhysicsBody;
     
-    [ColorHeader("Grounded Cast Config")]
+    [ColorHeader("Grounded Cast Config", ColorHeaderColor.Config)]
     [SerializeField] private LayerMask groundedMask;
     [SerializeField] private Transform groundCastTransform;
     [SerializeField, Range(0f, 5f)] private float groundCastLength;
     [SerializeField, Range(0f, 5f)] private float groundCastRadius;
 
-    // Grounded info
+    [ColorHeader("Debug Info")]
     [SerializeField, ReadOnly] private bool isGrounded;
     public bool IsGrounded => isGrounded;
     [SerializeField, ReadOnly] private Vector3 groundPos;
     [SerializeField, ReadOnly] private Vector3 groundNormal;
     public Vector3 GroundNormal => groundNormal;
     public Vector3 GravityNormal => -playerGravBody.GravityDirection;
+    public Vector3 GravityAcceleration => playerGravBody.GravityAcceleration;
+    public float GravityAccelMag => playerGravBody.GravityAccelMag;
 
     // Basis Info
-    private Vector3 orientationY;
-    private Vector3 orientationX;
-    private Vector3 orientationZ;
-    private Matrix4x4 orientationMtx = Matrix4x4.identity;
+    [SerializeField, ReadOnly] private Vector3 orientationY;
+    [SerializeField, ReadOnly] private Vector3 orientationX;
+    [SerializeField, ReadOnly] private Vector3 orientationZ;
+    [SerializeField, ReadOnly] private Matrix4x4 orientationMtx = Matrix4x4.identity;
 
     public Matrix4x4 OrientationMtx => orientationMtx;
     public Vector3 OrientationNormal => orientationY;
@@ -51,6 +53,8 @@ public class ProtagPhysicsState : MonoBehaviour
         {
             normal = -playerGravBody.GravityDirection;
         }
+
+        if (normal == Vector3.zero) return;
 
         // Orthonormalize
         Vector3 forward = playerPhysicsBody.forward;
