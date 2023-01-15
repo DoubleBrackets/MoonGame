@@ -101,7 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   detectionRange: {x: 0, y: 1}
-  moveBackDistance: 1
+  moveBackDistance: 0.55
   transitionDuration: 0.25
   thrusterMats:
   - {fileID: 2100000, guid: 4d13c8f616e335d458247e41ae3934e5, type: 2}

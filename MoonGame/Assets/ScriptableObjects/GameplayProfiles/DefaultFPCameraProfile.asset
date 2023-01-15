@@ -16,5 +16,5 @@ MonoBehaviour:
   verticalSensitivity: 3
   horizontalLerpSpeed: 35
   verticalLerpSpeed: 35
-  maxUpAngle: 85
-  maxDownAngle: -85
+  maxUpAngle: 100
+  maxDownAngle: -100

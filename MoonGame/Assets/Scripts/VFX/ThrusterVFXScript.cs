@@ -42,7 +42,7 @@ public class ThrusterVFXScript : MonoBehaviour
     private void Update()
     {
         targetDist = 0f;
-        if (Physics.SphereCast(transform.position, 0.5f,transform.forward, out RaycastHit info, detectionRange.y, wallDetection))
+        if (Physics.SphereCast(transform.position, 0.4f,transform.forward, out RaycastHit info, detectionRange.y, wallDetection))
         {
             float t = Mathf.InverseLerp(detectionRange.y, detectionRange.x, info.distance);
             targetDist = -moveBackDistance * t;
