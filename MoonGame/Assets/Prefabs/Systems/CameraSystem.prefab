@@ -1,5 +1,117 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1342656435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342656436}
+  - component: {fileID: 1342656437}
+  m_Layer: 0
+  m_Name: FootstepImpulse 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1342656436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342656435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4474623872276981109}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1342656437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342656435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 0
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.55849636
+        value: 0.63237166
+        inSlope: -0.23119815
+        outSlope: -0.23119815
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0070762634
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 1
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: -0.25, y: 0.25, z: 0}
 --- !u!1 &4474623871109031539
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +318,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.1
+    m_ImpulseDuration: 0.05
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -237,7 +349,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -0.5, z: 0}
+  m_DefaultVelocity: {x: 0, y: -0.4, z: 0}
 --- !u!1 &4474623871718003927
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,15 +447,15 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 4.2281103
-        outSlope: 4.2281103
+        inSlope: 1.4064766
+        outSlope: 1.4064766
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.15406367
-        value: 0.6513982
+        time: 0.34644246
+        value: 0.4872632
         inSlope: -0.007167193
         outSlope: -0.007167193
         tangentMode: 0
@@ -351,27 +463,27 @@ MonoBehaviour:
         inWeight: 0.30919594
         outWeight: 0.25143033
       - serializedVersion: 3
-        time: 0.45202583
-        value: 0.5558987
-        inSlope: -0.43927598
-        outSlope: -0.43927598
+        time: 0.5089932
+        value: 0.30242354
+        inSlope: -1.5176615
+        outSlope: -1.5176615
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.07653829
+        inWeight: 0.3618432
+        outWeight: 0.057513513
       - serializedVersion: 3
         time: 1
-        value: 0.009433746
-        inSlope: -0.99724585
-        outSlope: -0.99724585
-        tangentMode: 34
+        value: 0.004748538
+        inSlope: 0.03512661
+        outSlope: 0.03512661
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.1494163
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.6
+    m_ImpulseDuration: 0.7
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -402,7 +514,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -5, z: 0}
+  m_DefaultVelocity: {x: 0, y: -2, z: 0}
 --- !u!1 &4474623872276981106
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +526,9 @@ GameObject:
   - component: {fileID: 4474623872276981109}
   - component: {fileID: 4474623872276981108}
   - component: {fileID: 4474623872276981111}
+  - component: {fileID: 341788014}
   m_Layer: 0
-  m_Name: PlayerCam
+  m_Name: FPCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,6 +551,7 @@ Transform:
   - {fileID: 4474623871648705328}
   - {fileID: 4474623872174628992}
   - {fileID: 4474623872631076436}
+  - {fileID: 1342656436}
   m_Father: {fileID: 4474623872831865533}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -502,6 +616,19 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &341788014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474623872276981106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab87e13d50312b40b410d0b9b6ba1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameAnchor: {fileID: 11400000, guid: 30407c646bbd53e429028ebc0c656074, type: 2}
 --- !u!1 &4474623872280904905
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,8 +675,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   askStartEffect: {fileID: 11400000, guid: 88bd373f63a062f45b70913c2d6a683f, type: 2}
   jetpackShakeSource: {fileID: 4474623871648705331}
-  footstepShakeSource: {fileID: 4474623872174628995}
-  landingShakeSource: {fileID: 4474623872631076439}
+  footstep1ShakeSource: {fileID: 4474623872631076439}
+  footstep2ShakeSource: {fileID: 1342656437}
+  landingShakeSource: {fileID: 4474623872174628995}
 --- !u!1 &4474623872631076437
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,14 +724,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_ImpulseShape: 4
+    m_ImpulseShape: 0
     m_CustomImpulseShape:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.55849636
+        value: 0.63237166
+        inSlope: -0.23119815
+        outSlope: -0.23119815
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0070762634
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
+    m_ImpulseDuration: 1
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -634,7 +789,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -0.25, z: 0}
+  m_DefaultVelocity: {x: 0.25, y: 0.25, z: 0}
 --- !u!1 &4474623872831865530
 GameObject:
   m_ObjectHideFlags: 0

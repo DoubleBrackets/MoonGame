@@ -37,8 +37,7 @@ public class PlaneGravitySource : GravitySource
         Vector3 dir = -transform.up;
         var plane = new Plane(transform.up, transform.position);
         float dist = plane.GetDistanceToPoint(body.transform.position);
-        Debug.Log(dist);
-        float t = Mathf.InverseLerp(fieldCollider.bounds.extents.y, 0, dist);
+        float t = Mathf.InverseLerp(fieldCollider.size.y, 0, dist);
         float accel = baseAcceleration * accelerationDistanceCurve.Evaluate(t);
         return dir.normalized * accel;
 
@@ -47,6 +46,8 @@ public class PlaneGravitySource : GravitySource
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + transform.up * 5f);
+        var endPos = transform.position + transform.up * fieldCollider.size.y;
+        Gizmos.DrawLine(transform.position, endPos);
+        Gizmos.DrawWireSphere(endPos, 1f);
     }
 }

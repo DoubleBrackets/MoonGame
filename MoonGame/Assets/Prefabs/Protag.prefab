@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12673a671a5cec4896b541c261e9416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCam: {fileID: 0}
+  gameAnchors: {fileID: 11400000, guid: 30407c646bbd53e429028ebc0c656074, type: 2}
   transformAnchor: {fileID: 1443173512317592756}
   inputProvider: {fileID: 1443173511255844972}
   profile: {fileID: 11400000, guid: 92699f3ce5bbc5b49b6ccc2028f77c81, type: 2}
@@ -450,4 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53abfbbd95b34ba40bf2d9053a34ddc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBodyEnabled: {fileID: 11400000, guid: 8c122be321d14f3429b2424dd5702cf2, type: 2}
+  onBodyDisabled: {fileID: 11400000, guid: d328430870af0c34db031a3231358a31, type: 2}
   targetRb: {fileID: 1443173511380985502}
+  currentGravityAccel: {x: 0, y: 0, z: 0}
+  currentGravityDir: {x: 0, y: 0, z: 0}
+  currentGravityAccelMag: 0

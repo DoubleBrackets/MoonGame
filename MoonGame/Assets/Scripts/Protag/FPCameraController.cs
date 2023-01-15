@@ -6,12 +6,13 @@ using UnityEngine;
 public class FPCameraController : MonoBehaviour
 {
     [ColorHeader("Dependencies")] 
-    [SerializeField] private Transform targetCam;
+    [SerializeField] private GameAnchorsSO gameAnchors;
     [SerializeField] private Transform transformAnchor;
     [SerializeField] private InputProvider inputProvider;
     [SerializeField] private FPCameraProfileSO profile;
 
     // Internal state
+    [ColorHeader("Debug")] 
     [SerializeField, ReadOnly] private float xRot;
     [SerializeField, ReadOnly] private float xTargetRot;
     [SerializeField, ReadOnly] private float yRot;
@@ -20,7 +21,7 @@ public class FPCameraController : MonoBehaviour
     private Matrix4x4 camLocalRotMtx;
     private Matrix4x4 finalRotMtx;
 
-    public Vector3 Forward => targetCam.forward;
+    public Vector3 Forward => gameAnchors.FPCameraTransform.forward;
 
     private void OnEnable()
     {
@@ -53,6 +54,7 @@ public class FPCameraController : MonoBehaviour
 
         finalRotMtx = Matrix4x4.Rotate(transformAnchor.rotation) * camLocalRotMtx;
 
+        var targetCam = gameAnchors.FPCameraTransform;
         // Set rotation and position to camera transform
         targetCam.rotation = finalRotMtx.rotation;
         targetCam.position = transformAnchor.position;
@@ -64,9 +66,9 @@ public class FPCameraController : MonoBehaviour
         return rot * input;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if(finalRotMtx != default)
             finalRotMtx.DrawMtxGizmo(transformAnchor.position);
-    }
+    }*/
 }

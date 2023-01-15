@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 200, y: 9.082275, z: 200}
+  m_Center: {x: 0, y: 4.5411377, z: 0}
 --- !u!114 &9008425244755024578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,15 +63,15 @@ MonoBehaviour:
   askAddGravitySource: {fileID: 11400000, guid: da7ce276ca0d59d46ae7d27027f45048, type: 2}
   askRemoveGravitySource: {fileID: 11400000, guid: d3efb87e0b58fec46802e038b4e268c4, type: 2}
   fieldCollider: {fileID: 9008425244755024579}
-  baseAcceleration: 20
+  baseAcceleration: 5
   accelerationDistanceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -79,8 +79,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0

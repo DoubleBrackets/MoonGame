@@ -6,15 +6,31 @@ using UnityEngine;
 
 public class GravityBody : MonoBehaviour
 {
+    [ColorHeader("Invoking - On Gravity Body Enable/Disable Channels", ColorHeaderColor.TriggeringEvents)] 
+    [SerializeField]private GravityBodyEventChannelSO onBodyEnabled;
+    [SerializeField] private GravityBodyEventChannelSO onBodyDisabled;
+    
+    [ColorHeader("Dependencies")]
     [SerializeField] private Rigidbody targetRb;
 
-    private Vector3 currentGravityAccel;
-    private Vector3 currentGravityDir;
-    private float currentGravityAccelMag;
+    [ColorHeader("Debug")]
+    [SerializeField, ReadOnly] private Vector3 currentGravityAccel;
+    [SerializeField, ReadOnly] private Vector3 currentGravityDir;
+    [SerializeField, ReadOnly] private float currentGravityAccelMag;
 
     public Vector3 GravityDirection => currentGravityDir;
     public Vector3 GravityAcceleration => currentGravityAccel;
     public float GravityAccelMag => currentGravityAccelMag;
+
+    private void OnEnable()
+    {
+        onBodyEnabled.Raise(this);
+    }
+    
+    private void OnDisable()
+    {
+        onBodyDisabled.Raise(this);
+    }
 
     public void ResetGravityCache()
     {
@@ -41,8 +57,8 @@ public class GravityBody : MonoBehaviour
     private void OnDrawGizmos()
     {
         Vector3 lineStart = targetRb.position;
-        Vector3 lineEnd = lineStart + currentGravityDir * 2f;
-        Gizmos.color = Color.green;
+        Vector3 lineEnd = lineStart + currentGravityDir * 4f;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawLine(lineStart, lineEnd);
         Handles.color = Color.blue;
         Handles.Label(lineEnd, currentGravityAccelMag.ToString());

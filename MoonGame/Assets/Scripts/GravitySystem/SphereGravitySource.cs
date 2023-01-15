@@ -11,6 +11,7 @@ public class SphereGravitySource : GravitySource
     
     [ColorHeader("Gravity Source Config", ColorHeaderColor.Config)]
     [SerializeField] private float baseAcceleration;
+    [SerializeField] private float innerDistanceRadius;
     [SerializeField] private AnimationCurve accelerationDistanceCurve;
 
 
@@ -35,7 +36,7 @@ public class SphereGravitySource : GravitySource
     public override Vector3 CalculateAcceleration(GravityBody body)
     {
         Vector3 dir = orbitCollider.WorldPos() - body.transform.position;
-        float t = Mathf.InverseLerp(orbitCollider.radius, 0, dir.magnitude);
+        float t = Mathf.InverseLerp(orbitCollider.radius, innerDistanceRadius, dir.magnitude);
         float accel = baseAcceleration * accelerationDistanceCurve.Evaluate(t);
         return dir.normalized * accel;
     }

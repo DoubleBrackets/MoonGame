@@ -63,8 +63,7 @@ MonoBehaviour:
   askAddGravitySource: {fileID: 11400000, guid: da7ce276ca0d59d46ae7d27027f45048, type: 2}
   askRemoveGravitySource: {fileID: 11400000, guid: d3efb87e0b58fec46802e038b4e268c4, type: 2}
   orbitCollider: {fileID: 6526664321331978429}
-  baseAcceleration: 1250
-  rangeDropoffExponent: 1.7
+  baseAcceleration: 5
   accelerationDistanceCurve:
     serializedVersion: 2
     m_Curve:

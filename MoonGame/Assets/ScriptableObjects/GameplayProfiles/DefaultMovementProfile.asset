@@ -21,7 +21,7 @@ MonoBehaviour:
   jetpackAccel: 4
   jetpackMaxFuel: 5
   jetpackFuelRegen: 0.25
-  groundedRightingSpeed: 1.4
+  groundedRightingSpeed: 3
   airborneRightingSpeed: 3
   airborneRightingGravityScaleRange: {x: 0, y: 6}
   airborneRightingGravityScaleCurve:

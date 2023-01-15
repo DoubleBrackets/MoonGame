@@ -12,13 +12,13 @@ public abstract class GravitySource : MonoBehaviour
     [SerializeField] protected GravitySourceEventChannelSO askAddGravitySource;
     [SerializeField] protected GravitySourceEventChannelSO askRemoveGravitySource;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         askAddGravitySource.Raise(this);
         gameObject.layer = 8;
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
         askRemoveGravitySource.Raise(this);
     }
