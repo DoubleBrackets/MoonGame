@@ -10,6 +10,7 @@ public class ProtagPhysicsState : MonoBehaviour
     [SerializeField] private Transform playerPhysicsBody;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private MovementProfileSO movementProfile;
+    [SerializeField] private Transform defaultParent;
     
     [ColorHeader("Grounded Cast Config", ColorHeaderColor.Config)]
     [SerializeField] private LayerMask groundedMask;
@@ -22,6 +23,7 @@ public class ProtagPhysicsState : MonoBehaviour
     public bool IsGrounded => isGrounded;
     [SerializeField, ReadOnly] private Vector3 groundPos;
     [SerializeField, ReadOnly] private Vector3 groundNormal;
+
     public Vector3 GroundNormal => groundNormal;
     public Vector3 GravityNormal => -playerGravBody.GravityDirection;
     public Vector3 GravityAcceleration => playerGravBody.GravityAcceleration;
@@ -29,6 +31,11 @@ public class ProtagPhysicsState : MonoBehaviour
 
     public float VerticalSpeed => Mathf.Abs(Vector3.Dot(OrientationNormal, rb.velocity));
 
+    // Sticking info
+    private Transform groundObjectTransform;
+    //private Transform prevObjectTransform;
+    private Vector3 prevPos;
+    
     // Basis Info
     [SerializeField, ReadOnly] private Vector3 orientationY;
     [SerializeField, ReadOnly] private Vector3 orientationX;
@@ -42,6 +49,29 @@ public class ProtagPhysicsState : MonoBehaviour
     {
         PerformGroundedCast();
         UpdateOrientationBasis();
+        StickToObjects();
+    }
+
+    private void StickToObjects()
+    {
+        if (isGrounded)
+        {
+            Vector3 pos = groundObjectTransform.position;
+            Vector3 offset = pos - prevPos;
+            playerPhysicsBody.position += offset;
+            prevPos = pos;
+        }
+        else
+        {
+            if (groundObjectTransform != null)
+            {
+                // Add the object velocity to rb when jumping off an object
+                Vector3 pos = groundObjectTransform.position;
+                Vector3 offset = pos - prevPos;
+                rb.velocity += offset / Time.fixedDeltaTime;
+            }
+            groundObjectTransform = null;
+        }
     }
 
     // Generate Orientation information based on some normal (ground or gravity)
@@ -93,6 +123,11 @@ public class ProtagPhysicsState : MonoBehaviour
             groundPos = hitInfo.point;
             float gravityAlignment = Vector3.Dot(groundNormal, GravityNormal);
             isGrounded = gravityAlignment >= movementProfile.minGroundedDot;
+            if (isGrounded && groundObjectTransform != hitInfo.transform)
+            {
+                groundObjectTransform = hitInfo.transform;
+                prevPos = groundObjectTransform.position;
+            }
         }
     }
 

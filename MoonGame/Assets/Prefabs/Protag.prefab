@@ -137,6 +137,7 @@ MonoBehaviour:
   playerPhysicsBody: {fileID: 1443173511380985498}
   rb: {fileID: 1443173511380985502}
   movementProfile: {fileID: 11400000, guid: 4584ff09682f22649b0060c38eb7cc2c, type: 2}
+  defaultParent: {fileID: 1443173512406474393}
   groundedMask:
     serializedVersion: 2
     m_Bits: 64
@@ -393,7 +394,7 @@ Transform:
   - {fileID: 1443173511273364640}
   - {fileID: 1443173511255844973}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1443173512438380151
 GameObject:
