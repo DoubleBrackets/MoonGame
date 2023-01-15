@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSensitivity: 3.5
   verticalSensitivity: 3
-  horizontalLerpSpeed: 27
-  verticalLerpSpeed: 23
+  horizontalLerpSpeed: 35
+  verticalLerpSpeed: 35
   maxUpAngle: 85
   maxDownAngle: -85
