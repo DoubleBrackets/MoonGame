@@ -8,6 +8,8 @@ public class ProtagPhysicsState : MonoBehaviour
     [ColorHeader("Dependencies")] 
     [SerializeField] private GravityBody playerGravBody;
     [SerializeField] private Transform playerPhysicsBody;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private MovementProfileSO movementProfile;
     
     [ColorHeader("Grounded Cast Config", ColorHeaderColor.Config)]
     [SerializeField] private LayerMask groundedMask;
@@ -24,6 +26,8 @@ public class ProtagPhysicsState : MonoBehaviour
     public Vector3 GravityNormal => -playerGravBody.GravityDirection;
     public Vector3 GravityAcceleration => playerGravBody.GravityAcceleration;
     public float GravityAccelMag => playerGravBody.GravityAccelMag;
+
+    public float VerticalSpeed => Mathf.Abs(Vector3.Dot(OrientationNormal, rb.velocity));
 
     // Basis Info
     [SerializeField, ReadOnly] private Vector3 orientationY;
@@ -85,9 +89,11 @@ public class ProtagPhysicsState : MonoBehaviour
                 groundCastLength, 
                 groundedMask))
         {
-            isGrounded = true;
             groundNormal = hitInfo.normal.normalized;
             groundPos = hitInfo.point;
+            float gravityAlignment = Vector3.Dot(groundNormal, GravityNormal);
+            Debug.Log(gravityAlignment);
+            isGrounded = gravityAlignment >= movementProfile.minGroundedDot;
         }
     }
 

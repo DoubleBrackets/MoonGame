@@ -51,7 +51,9 @@ MonoBehaviour:
   physicsState: {fileID: 1443173511273364646}
   protagMovementController: {fileID: 1443173511273364645}
   rotationResolver: {fileID: 1443173511273364644}
-  askStartCameraImpulse: {fileID: 11400000, guid: 88bd373f63a062f45b70913c2d6a683f, type: 2}
+  askStartCameraRecompose: {fileID: 11400000, guid: 88bd373f63a062f45b70913c2d6a683f, type: 2}
+  askStartThrusterVFX: {fileID: 11400000, guid: 84f64cb328daff34cab2e17702513430, type: 2}
+  askEndThrusterVFX: {fileID: 11400000, guid: 47a259cc5e35a6640aa5fa307a6b3071, type: 2}
   currentState: 0
 --- !u!114 &1443173511255844972
 MonoBehaviour:
@@ -133,12 +135,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGravBody: {fileID: 1443173512438380148}
   playerPhysicsBody: {fileID: 1443173511380985498}
+  rb: {fileID: 1443173511380985502}
+  movementProfile: {fileID: 11400000, guid: 4584ff09682f22649b0060c38eb7cc2c, type: 2}
   groundedMask:
     serializedVersion: 2
     m_Bits: 64
   groundCastTransform: {fileID: 1443173511974890394}
-  groundCastLength: 1.18
-  groundCastRadius: 0.19
+  groundCastLength: 0.82
+  groundCastRadius: 0.45
   isGrounded: 0
   groundPos: {x: 0, y: 0, z: 0}
   groundNormal: {x: 0, y: 0, z: 0}

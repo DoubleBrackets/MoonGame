@@ -15,6 +15,7 @@ MonoBehaviour:
   maxGroundedSpeed: 5
   groundedAcceleration: 20
   groundedFriction: 25
+  minGroundedDot: 0.7
   jumpVelocity: 5
   maxAirSpeed: 5.5
   airAcceleration: 0

@@ -9,6 +9,7 @@ public class MovementProfileSO : ScriptableObject
     public float maxGroundedSpeed;
     public float groundedAcceleration;
     public float groundedFriction;
+    public float minGroundedDot;    
 
     [ColorHeader("Airborne Stats")] 
     public float jumpVelocity;
