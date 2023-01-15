@@ -36,6 +36,7 @@ public class GravityBody : MonoBehaviour
     {
         currentGravityAccel = Vector3.zero;
         currentGravityDir = Vector3.zero;
+        currentGravityAccelMag = 0;
     }
 
     public void AddAccel(Vector3 val)

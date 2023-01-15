@@ -92,7 +92,6 @@ public class ProtagPhysicsState : MonoBehaviour
             groundNormal = hitInfo.normal.normalized;
             groundPos = hitInfo.point;
             float gravityAlignment = Vector3.Dot(groundNormal, GravityNormal);
-            Debug.Log(gravityAlignment);
             isGrounded = gravityAlignment >= movementProfile.minGroundedDot;
         }
     }

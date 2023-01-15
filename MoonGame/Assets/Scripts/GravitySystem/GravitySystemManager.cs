@@ -100,6 +100,7 @@ public class GravitySystemManager : MonoBehaviour
             // Remove if this body has no interactions left
             if (!hasKey || sourceInteractionCounter[body] <= 0)
             {
+                body.ResetGravityCache();
                 sourceInteractionCounter.Remove(body);
             }
         }

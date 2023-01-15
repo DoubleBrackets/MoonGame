@@ -37,7 +37,7 @@ public class Protag : MonoBehaviour
     private QStateMachine stateMachine;
     
     public Vector2 transformedHInput => protagFPCam.TransformInput(inputProvider.HorizontalMovementNormalized);
-    
+
     private void OnEnable()
     {
         stateMachine = new QStateMachine((int)ProtagState.Idle);
@@ -62,7 +62,7 @@ public class Protag : MonoBehaviour
 
     private void LandingRecomposeEffect()
     {
-        askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.Landing, Mathf.Clamp(physicsState.VerticalSpeed,4f,8f));
+        askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.Landing, Mathf.Clamp(physicsState.VerticalSpeed,6f,8f));
     }
     
     #region Add States
@@ -222,6 +222,7 @@ public class Protag : MonoBehaviour
 
     public void EnterJump()
     {
+        askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.Jump);
         stateMachine.SwitchState((int)ProtagState.Jump);
     }
 
@@ -323,7 +324,16 @@ public class Protag : MonoBehaviour
 
     public void JetpackFixedUpdate()
     {
-        protagMovementController.JetpackMovement(protagFPCam.Forward, Time.fixedDeltaTime);
+        float timeStep = Time.fixedDeltaTime;
+        protagMovementController.JetpackMovement(protagFPCam.Forward, timeStep);
+        if (physicsState.GravityAccelMag > 1.5f)
+        {
+            rotationResolver.AirborneRotationResolve(timeStep, physicsState.GravityAccelMag);
+        }
+        else
+        {
+            //rotationResolver.JetpackRotationResolve(timeStep, protagFPCam.LookRotation);
+        }
     }
 
     public void JetpackEnterState()

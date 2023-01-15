@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LandingRecomposeProfile
   m_EditorClassIdentifier: 
   description: 
-  duration: 0.9
+  duration: 0.75
   tiltCurve:
     serializedVersion: 2
     m_Curve:
@@ -27,8 +27,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.15666711
-      value: 0.9672818
+      time: 0.19235742
+      value: 0.85635805
       inSlope: -0.0070154686
       outSlope: -0.0070154686
       tangentMode: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  tiltMagnitude: 1.8
+  tiltMagnitude: 1
   panCurve:
     serializedVersion: 2
     m_Curve:

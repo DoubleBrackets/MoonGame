@@ -23,6 +23,7 @@ public class MovementProfileSO : ScriptableObject
 
     [ColorHeader("Rotation Righting Stats")]
     public float groundedRightingSpeed;
+    public float jetpackRightingSpeed;
     public float airborneRightingSpeed;
     [RangeSlider(0f, 100f)] public Vector2 airborneRightingGravityScaleRange;
     public AnimationCurve airborneRightingGravityScaleCurve;

@@ -9,6 +9,12 @@ public class ThrusterVFXScript : MonoBehaviour
     [SerializeField] private VoidEventChannelSO askEnableThrusters;
     [SerializeField] private VoidEventChannelSO askDisableThrusters;
 
+    [ColorHeader("Wall Avoidance")] 
+    [SerializeField] private LayerMask wallDetection;
+    [SerializeField, RangeSlider(0, 3f)] private Vector2 detectionRange;
+    [SerializeField, Range(0, 4f)] private float moveBackDistance;
+    private float targetDist;
+    
     [ColorHeader("Config", ColorHeaderColor.Config)]
     [SerializeField] private float transitionDuration;
 
@@ -33,6 +39,20 @@ public class ThrusterVFXScript : MonoBehaviour
         askDisableThrusters.OnRaised -= DisableThrusters;
     }
 
+    private void Update()
+    {
+        targetDist = 0f;
+        if (Physics.SphereCast(transform.position, 0.5f,transform.forward, out RaycastHit info, detectionRange.y, wallDetection))
+        {
+            float t = Mathf.InverseLerp(detectionRange.y, detectionRange.x, info.distance);
+            targetDist = -moveBackDistance * t;
+        }
+
+        var cPos = transform.localPosition;
+        cPos.z = Mathf.Lerp(cPos.z, targetDist, 20f * Time.deltaTime);
+        transform.localPosition = cPos;
+    }
+
     private void EnableThrusters()
     {
         StopCurrentTransition();
@@ -45,7 +65,7 @@ public class ThrusterVFXScript : MonoBehaviour
         while (time < transitionDuration)
         {
             time += Time.deltaTime;
-            SetEnabledParamForAll(time / transitionDuration);
+            SetEnabledParamForAll(Mathf.SmoothStep(0f, 1f, time / transitionDuration));
             yield return new WaitForEndOfFrame();
         }
 
@@ -64,7 +84,7 @@ public class ThrusterVFXScript : MonoBehaviour
         while (time < transitionDuration)
         {
             time += Time.deltaTime;
-            SetEnabledParamForAll(1 - time / transitionDuration);
+            SetEnabledParamForAll(Mathf.SmoothStep(0f, 1f, 1 - time / transitionDuration));
             yield return new WaitForEndOfFrame();
         }
 

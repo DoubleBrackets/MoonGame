@@ -16,13 +16,14 @@ MonoBehaviour:
   groundedAcceleration: 20
   groundedFriction: 25
   minGroundedDot: 0.7
-  jumpVelocity: 5
+  jumpVelocity: 4.5
   maxAirSpeed: 5.5
   airAcceleration: 0
   jetpackAccel: 4
   jetpackMaxFuel: 5
   jetpackFuelRegen: 0.25
   groundedRightingSpeed: 3
+  jetpackRightingSpeed: 1.5
   airborneRightingSpeed: 3
   airborneRightingGravityScaleRange: {x: 0, y: 6}
   airborneRightingGravityScaleCurve:

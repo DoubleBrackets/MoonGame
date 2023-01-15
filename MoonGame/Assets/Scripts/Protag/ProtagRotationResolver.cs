@@ -12,7 +12,7 @@ public class ProtagRotationResolver : MonoBehaviour
 
     public void GroundedRotationResolve(float timeStep, float gravityAccelMag)
     {
-        LerpToOrientation(movementProfile.groundedRightingSpeed * timeStep);
+        LerpToCurrentOrientation(movementProfile.groundedRightingSpeed * timeStep);
     }
 
     public void AirborneRotationResolve(float timeStep, float gravityAccelMag)
@@ -25,10 +25,18 @@ public class ProtagRotationResolver : MonoBehaviour
         float rightingSpeed = movementProfile.airborneRightingSpeed *
                       movementProfile.airborneRightingGravityScaleCurve.Evaluate(t);
         
-        LerpToOrientation(rightingSpeed * timeStep);
+        LerpToCurrentOrientation(rightingSpeed * timeStep);
     }
 
-    private void LerpToOrientation(float amount)
+    public void JetpackRotationResolve(float timeStep, Quaternion targetRot)
+    {
+        var cRot = targetPhysicsBody.rotation;
+        float amount = timeStep * movementProfile.jetpackRightingSpeed;
+        cRot = Quaternion.Lerp(cRot, targetRot, amount);
+        targetPhysicsBody.rotation = Quaternion.RotateTowards(cRot, targetRot, amount * 5f);
+    }
+
+    private void LerpToCurrentOrientation(float amount)
     {
         var cRot = targetPhysicsBody.rotation;
         var targetRot = physicsState.OrientationMtx.rotation;

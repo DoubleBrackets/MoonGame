@@ -11,7 +11,8 @@ public class CameraRecomposeManager : MonoBehaviour
         JetpackShake,
         Landing,
         Footstep1,
-        Footstep2
+        Footstep2,
+        Jump
     }
 
     class RecomposeInstance
