@@ -55,6 +55,7 @@ public class GravityBody : MonoBehaviour
         targetRb.velocity += currentGravityAccel * timeStep;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Vector3 lineStart = targetRb.position;
@@ -64,4 +65,5 @@ public class GravityBody : MonoBehaviour
         Handles.color = Color.blue;
         Handles.Label(lineEnd, currentGravityAccelMag.ToString());
     }
+#endif
 }

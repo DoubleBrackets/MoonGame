@@ -595,6 +595,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3078814018370051405, guid: b3ce220b9bbeb3e4b8d57293512a56c7, type: 3}
+      propertyPath: askLoadScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6a224fdd15fb64abde147a4cf302cc, type: 2}
     - target: {fileID: 6628572857970488843, guid: b3ce220b9bbeb3e4b8d57293512a56c7, type: 3}
       propertyPath: m_RootOrder
       value: 7

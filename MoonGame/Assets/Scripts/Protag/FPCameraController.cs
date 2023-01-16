@@ -27,6 +27,7 @@ public class FPCameraController : MonoBehaviour
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         UpdateCamera();
     }
 

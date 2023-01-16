@@ -23,6 +23,7 @@ public class Orbiter : MonoBehaviour
 
     private void OnValidate()
     {
+        if (targetObject == null) return;
         SetPosition(startAngle * Mathf.Deg2Rad);
     }
 

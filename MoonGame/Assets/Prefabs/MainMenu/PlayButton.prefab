@@ -283,4 +283,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   askChangeScene: {fileID: 11400000, guid: 2d6a224fdd15fb64abde147a4cf302cc, type: 2}
-  scene: {fileID: 102900000, guid: 9b500289363b6f74d84e8749525a329d, type: 3}
+  sceneName: ControllerTest
