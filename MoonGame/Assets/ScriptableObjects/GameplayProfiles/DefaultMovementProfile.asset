@@ -17,9 +17,9 @@ MonoBehaviour:
   groundedFriction: 25
   minGroundedDot: 0.7
   jumpVelocity: 4.5
-  maxAirSpeed: 5.5
+  maxAirSpeed: 8
   airAcceleration: 0
-  jetpackAccel: 4.25
+  jetpackAccel: 6
   jetpackMaxFuel: 5
   jetpackFuelRegen: 0.25
   groundedRightingSpeed: 3
