@@ -22,7 +22,7 @@ public class FPCameraController : MonoBehaviour
     private Matrix4x4 finalRotMtx;
 
     public Vector3 Forward => gameAnchors.FPCameraTransform.forward;
-    public Quaternion LookRotation => Quaternion.LookRotation(Forward, gameAnchors.FPCameraTransform.up);
+    public Quaternion LookRotation => gameAnchors.FPCameraTransform.rotation;
 
     private void OnEnable()
     {

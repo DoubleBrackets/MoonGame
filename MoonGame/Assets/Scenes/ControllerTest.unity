@@ -262,7 +262,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27844
+  m_Name: pb_Mesh27858
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -563,7 +563,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27738
+  m_Name: pb_Mesh27746
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -728,7 +728,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27778
+  m_Name: pb_Mesh27786
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1393,7 +1393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526664321331978430, guid: c61629c9ed7463b4bbb7565bbb7e0e50, type: 3}
       propertyPath: accelerationDistanceCurve.m_Curve.Array.data[0].time
-      value: 0.003162384
+      value: 0.0031738281
       objectReference: {fileID: 0}
     - target: {fileID: 6526664321331978430, guid: c61629c9ed7463b4bbb7565bbb7e0e50, type: 3}
       propertyPath: accelerationDistanceCurve.m_Curve.Array.data[1].time
@@ -1405,7 +1405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526664321331978430, guid: c61629c9ed7463b4bbb7565bbb7e0e50, type: 3}
       propertyPath: accelerationDistanceCurve.m_Curve.Array.data[0].value
-      value: 0.103759766
+      value: 0.05444336
       objectReference: {fileID: 0}
     - target: {fileID: 6526664321331978430, guid: c61629c9ed7463b4bbb7565bbb7e0e50, type: 3}
       propertyPath: accelerationDistanceCurve.m_Curve.Array.data[1].value
@@ -1513,7 +1513,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27796
+  m_Name: pb_Mesh27804
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3287,7 +3287,7 @@ MonoBehaviour:
   targetObject: {fileID: 124931565}
   radius: 51.927265
   startAngle: -39.61
-  orbitPeriod: 35
+  orbitPeriod: 50
 --- !u!1 &1683852024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4370,6 +4370,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 661578156, guid: 6dd31e2549c5f694ab668988f4244b6c, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 778010514, guid: 6dd31e2549c5f694ab668988f4244b6c, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.004
+      objectReference: {fileID: 0}
     - target: {fileID: 4474623872831865530, guid: 6dd31e2549c5f694ab668988f4244b6c, type: 3}
       propertyPath: m_Name
       value: CameraSystem

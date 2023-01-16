@@ -54,6 +54,9 @@ MonoBehaviour:
   askStartCameraRecompose: {fileID: 11400000, guid: 88bd373f63a062f45b70913c2d6a683f, type: 2}
   askStartThrusterVFX: {fileID: 11400000, guid: 84f64cb328daff34cab2e17702513430, type: 2}
   askEndThrusterVFX: {fileID: 11400000, guid: 47a259cc5e35a6640aa5fa307a6b3071, type: 2}
+  askDisplayGravityStatus: {fileID: 11400000, guid: 3a67e4f1b476a1a46b931e3a9ed8ccdb, type: 2}
+  askSetVelDisplay: {fileID: 11400000, guid: 5b05881bd0d5b2f41b2784d5ef647abb, type: 2}
+  askSetGravDisplay: {fileID: 11400000, guid: c01271bd4febe264cb4a99782d7e1d8a, type: 2}
   currentState: 0
 --- !u!114 &1443173511255844972
 MonoBehaviour:

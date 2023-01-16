@@ -29,6 +29,8 @@ public class ProtagPhysicsState : MonoBehaviour
     public Vector3 GravityAcceleration => playerGravBody.GravityAcceleration;
     public float GravityAccelMag => playerGravBody.GravityAccelMag;
 
+    public Vector3 CurrentVel => rb.velocity;
+
     public float VerticalSpeed => Mathf.Abs(Vector3.Dot(OrientationNormal, rb.velocity));
 
     // Sticking info

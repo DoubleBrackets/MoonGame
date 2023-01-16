@@ -29,6 +29,9 @@ public class Protag : MonoBehaviour
     [SerializeField] private RecomposeEffectEventChannelSO askStartCameraRecompose;
     [SerializeField] private VoidEventChannelSO askStartThrusterVFX;
     [SerializeField] private VoidEventChannelSO askEndThrusterVFX;
+    [SerializeField] private StringEventChannelSO askDisplayGravityStatus;
+    [SerializeField] private Vector3EventChannelSO askSetVelDisplay;
+    [SerializeField] private Vector3EventChannelSO askSetGravDisplay;
 
     [ColorHeader("Debug Fields")]
     [ReadOnly, SerializeField] private ProtagState currentState;
@@ -53,6 +56,8 @@ public class Protag : MonoBehaviour
     {
         stateMachine.UpdateStateMachine();
         currentState = (ProtagState)stateMachine.CurrentState;
+        askSetVelDisplay.Raise(physicsState.CurrentVel);
+        askSetGravDisplay.Raise(physicsState.GravityAcceleration);
     }
 
     private void FixedUpdate()
@@ -63,6 +68,22 @@ public class Protag : MonoBehaviour
     private void LandingRecomposeEffect()
     {
         askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.Landing, Mathf.Clamp(physicsState.VerticalSpeed,6f,8f));
+    }
+
+    private string GetGravityStatusText()
+    {
+        if (physicsState.GravityAccelMag <= 0f)
+        {
+            return "nG 0";
+        }
+        else if(physicsState.GravityAccelMag <= 1.5f)
+        {
+            return $"lG {physicsState.GravityAccelMag.ToString("F2")}";
+        }
+        else
+        {
+            return $"hG {physicsState.GravityAccelMag.ToString("F2")}";
+        }
     }
     
     #region Add States
@@ -125,7 +146,7 @@ public class Protag : MonoBehaviour
 
     public void IdleUpdate()
     {
-        
+        askDisplayGravityStatus.Raise(GetGravityStatusText());
     }
 
     public void IdleFixedUpdate()
@@ -177,6 +198,7 @@ public class Protag : MonoBehaviour
             footstepAlternate = !footstepAlternate;
             walkImpulseTimer = Time.time;
         }
+        askDisplayGravityStatus.Raise(GetGravityStatusText());
     }
 
     public void WalkFixedUpdate()
@@ -270,7 +292,7 @@ public class Protag : MonoBehaviour
 
     public void AirborneUpdate()
     {
-
+        askDisplayGravityStatus.Raise(GetGravityStatusText());
     }
 
     public void AirborneFixedUpdate()
@@ -320,6 +342,7 @@ public class Protag : MonoBehaviour
             shakeTimer = Time.time;
             askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.JetpackShake);
         }
+        askDisplayGravityStatus.Raise(GetGravityStatusText());
     }
 
     public void JetpackFixedUpdate()
