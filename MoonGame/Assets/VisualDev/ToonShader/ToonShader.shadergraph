@@ -431,20 +431,6 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "e134c71cd2cd48c29157fba456fe89e5"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "9db8fb98e38344ea999338f9d4a57bc8"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
                     "m_Id": "e22759705f3745d09b535603b3851969"
                 },
                 "m_SlotId": 1
@@ -630,6 +616,20 @@
                     "m_Id": "daded368d647482d85965eab1b74ce10"
                 },
                 "m_SlotId": -2096903480
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "f08dba83068848c2b899caa5acf83f54"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "e134c71cd2cd48c29157fba456fe89e5"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -967,7 +967,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -1999,9 +1999,9 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -792.0,
-            "y": 661.3333129882813,
+            "y": 757.3333129882813,
             "width": 136.00006103515626,
-            "height": 36.0
+            "height": 35.99993896484375
         }
     },
     "m_Slots": [
@@ -3002,7 +3002,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Color",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -3284,7 +3284,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -3990,7 +3990,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Color",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,

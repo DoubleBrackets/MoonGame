@@ -126,6 +126,7 @@ Material:
     - _MAIN_LIGHT_SHADOWS_CASCADE: 1
     - _Metallic: 0
     - _NormalMapScale: 1
+    - _NormalMapStrength: 1
     - _NormalStrength: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -145,8 +146,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.46377712, g: 0.4683088, b: 0.509434, a: 1}
-    - _DiffuseTint: {r: 0.5424528, g: 1, b: 0.7054149, a: 0.8666667}
+    - _DiffuseTint: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.38823527, g: 0.83137256, b: 0.46811137, a: 1}
+    - _SpecularColor: {r: 0.623309, g: 0.8207547, b: 0.65825516, a: 1}
   m_BuildTextureStacks: []

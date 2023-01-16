@@ -13,6 +13,7 @@ public class AudioSourceContinuous : MonoBehaviour
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
     [SerializeField] private float stopDropoffDuration = 0.1f;
+    [SerializeField] private bool playOnAwake;
 
     private Coroutine dropoffCorout;
 
@@ -20,6 +21,9 @@ public class AudioSourceContinuous : MonoBehaviour
     {
         askPlayAudio.OnRaised += PlayAudio;
         askStopAudio.OnRaised += StopAudio;
+
+        if (playOnAwake)
+            PlayAudio();
     }
 
     private void OnDisable()
