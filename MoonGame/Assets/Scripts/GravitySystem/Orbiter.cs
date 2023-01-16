@@ -28,6 +28,8 @@ public class Orbiter : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (orbitPeriod == 0)
+            return;
         time += Time.fixedDeltaTime;
         float angle = Mathf.PI * 2 * time / orbitPeriod;
         SetPosition(angle);
