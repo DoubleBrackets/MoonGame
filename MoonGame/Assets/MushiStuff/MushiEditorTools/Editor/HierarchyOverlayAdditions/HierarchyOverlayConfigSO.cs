@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "MushiTools/Hierarchy Overlays/Hierarchy Overlay Config")]
+[CreateAssetMenu(menuName = "MushiStuff/MushiEditorTools/Hierarchy Overlays/Hierarchy Overlay Config")]
 public class HierarchyOverlayConfigSO : SingleActiveConfigSO
 {
     [System.Serializable]

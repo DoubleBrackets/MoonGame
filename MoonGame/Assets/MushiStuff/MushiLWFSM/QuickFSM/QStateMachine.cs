@@ -60,11 +60,16 @@ namespace MushiLWFSM
             stateMap[currentState].Update();
         }
 
-        private void SwitchState(int newState)
+        public void SwitchState(int newState)
         {
             stateMap[currentState].ExitState();
             currentState = newState;
             stateMap[currentState].EnterState();
+        }
+
+        public void ExitStateMachine()
+        {
+            stateMap[currentState].ExitState();
         }
         
         public void FixedUpdateStateMachine()

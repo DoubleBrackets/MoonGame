@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff956d9d2892f4c8735986632f4301, type: 3}
+  m_Name: MoonGameOverlayGroup
+  m_EditorClassIdentifier: 
+  stringTargetIcons: []
+  monoScriptTargetIcons:
+  - {fileID: 11400000, guid: 26166d0d2e7ef2c4495c559d38368d2a, type: 2}
+  - {fileID: 11400000, guid: 13a9d878cd25da041ab8dc8c4370341c, type: 2}
+  - {fileID: 11400000, guid: 0a032355bcb3ba64aa7a23a59cc4c889, type: 2}
+  - {fileID: 11400000, guid: 7f1e733cd231f894e807cb966f3751a0, type: 2}
+  - {fileID: 11400000, guid: ec537ce4544afa34cafac449a892ed21, type: 2}
