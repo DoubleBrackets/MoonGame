@@ -33,6 +33,13 @@ public class Protag : MonoBehaviour
     [SerializeField] private Vector3EventChannelSO askSetVelDisplay;
     [SerializeField] private Vector3EventChannelSO askSetGravDisplay;
 
+    [ColorHeader("Invoking - Various SFX Channels", ColorHeaderColor.TriggeringEvents)]
+    [SerializeField] private VoidEventChannelSO askPlayLandingSound;
+    [SerializeField] private VoidEventChannelSO askPlayJumpSound;
+    [SerializeField] private VoidEventChannelSO askPlayStepSound;
+    [SerializeField] private VoidEventChannelSO askStartJetpackSound;
+    [SerializeField] private VoidEventChannelSO askStopJetpackSound;
+
     [ColorHeader("Debug Fields")]
     [ReadOnly, SerializeField] private ProtagState currentState;
 
@@ -65,8 +72,9 @@ public class Protag : MonoBehaviour
         stateMachine.FixedUpdateStateMachine();
     }
 
-    private void LandingRecomposeEffect()
+    private void LandingEffects()
     {
+        askPlayLandingSound.Raise();
         askStartCameraRecompose.Raise(CameraRecomposeManager.RecomposeEffect.Landing, Mathf.Clamp(physicsState.VerticalSpeed,6f,8f));
     }
 
@@ -189,7 +197,7 @@ public class Protag : MonoBehaviour
     
     public void WalkUpdate()
     {
-        if (Time.time - walkImpulseTimer > 0.75f)
+        if (Time.time - walkImpulseTimer > 0.75f && physicsState.Speed > 1f)
         {
             askStartCameraRecompose.Raise(footstepAlternate ?
                 CameraRecomposeManager.RecomposeEffect.Footstep1 :
@@ -197,6 +205,7 @@ public class Protag : MonoBehaviour
 
             footstepAlternate = !footstepAlternate;
             walkImpulseTimer = Time.time;
+            askPlayStepSound.Raise();
         }
         askDisplayGravityStatus.Raise(GetGravityStatusText());
     }
@@ -260,6 +269,7 @@ public class Protag : MonoBehaviour
 
     public void JumpEnterState()
     {
+        askPlayJumpSound.Raise(); 
         jumpStateTime = Time.time;
         protagMovementController.Jump();
     }
@@ -277,7 +287,7 @@ public class Protag : MonoBehaviour
         
         if (physicsState.IsGrounded)
         {
-           LandingRecomposeEffect();
+           LandingEffects();
             return (int)ProtagState.Idle;
         }
         else
@@ -317,7 +327,7 @@ public class Protag : MonoBehaviour
     {
         if (physicsState.IsGrounded)
         {
-            LandingRecomposeEffect();
+            LandingEffects();
             return (int)ProtagState.Idle;
         }
 
@@ -362,11 +372,13 @@ public class Protag : MonoBehaviour
     public void JetpackEnterState()
     {
         shakeTimer = Time.time;
+        askStartJetpackSound.Raise();
         askStartThrusterVFX.Raise();
     }
 
     public void JetpackExitState()
     {
+        askStopJetpackSound.Raise();
         askEndThrusterVFX.Raise();
     }
 
@@ -374,7 +386,7 @@ public class Protag : MonoBehaviour
     {
         if (physicsState.IsGrounded)
         {
-            LandingRecomposeEffect();
+            LandingEffects();
             return (int)ProtagState.Idle;
         }
         if (!inputProvider.IsJumpHeld)
