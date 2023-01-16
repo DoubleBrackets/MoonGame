@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameAnchorsSO : DescriptionBaseSO
 {
     public Transform FPCameraTransform;
+    public Camera mainCam;
 }

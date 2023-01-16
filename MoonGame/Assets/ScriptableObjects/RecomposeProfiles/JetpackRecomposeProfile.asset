@@ -101,7 +101,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  tiltMagnitude: 0.2
+  tiltMagnitude: 0.21
   panCurve:
     serializedVersion: 2
     m_Curve:
@@ -189,7 +189,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  panMagnitude: 0.2
+  panMagnitude: 0.21
   dutchCurve:
     serializedVersion: 2
     m_Curve:
@@ -277,7 +277,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dutchMagnitude: 0.2
+  dutchMagnitude: 0.21
   zoomCurve:
     serializedVersion: 2
     m_Curve:
