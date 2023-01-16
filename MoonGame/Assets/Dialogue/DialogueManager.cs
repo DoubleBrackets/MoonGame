@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text nameText;
-    public Text dialogueText;
+    [SerializeField]private Text nameText;
+    [SerializeField] private Text dialogueText;
 
-    public Animator animator;
+    private bool hasEnded = true;
+
+    [SerializeField] private Animator animator;
 
     private Queue<string> sentences;
+
+    private Transform interactionPoint;
+    private Transform interactor;
+    private float radius;
 
     // Start is called before the first frame update
     void Start()
@@ -18,17 +24,42 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void startDialogue(Dialogue dialogue)
+    void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            displayNextSentence();
+        }
+        if(!hasEnded)
+        {
+            float distance = Vector3.Distance(interactionPoint.position, interactor.position);
+            if (distance > radius)
+            {
+                endDialogue();
+            }
+        }
+        
+    }
+
+    public bool getHasEnded()
+    {
+        return hasEnded;
+    }
+
+    public void startDialogue(Dialogue dialogue, Transform interactPoint, Transform i, float r)
+    {
+        interactionPoint = interactPoint;
+        interactor = i;
+        radius = r;
+        hasEnded = false;
         animator.SetBool("IsOpen", true);
 
-        Debug.Log("starting convo with " + dialogue.name);
 
         nameText.text = dialogue.name;
 
         sentences.Clear();
 
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -61,6 +92,7 @@ public class DialogueManager : MonoBehaviour
 
     void endDialogue()
     {
+        hasEnded = true;
         animator.SetBool("IsOpen", false);
     }
 }

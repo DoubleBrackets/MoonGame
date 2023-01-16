@@ -6,10 +6,12 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    public void triggerDialogue()
+    public void triggerDialogue(Transform interactionPoint, Transform interactor, float radius)
     {
-
-        FindObjectOfType<DialogueManager>().startDialogue(dialogue);
+        DialogueManager dm = FindObjectOfType<DialogueManager>();
+        if (dm.getHasEnded())
+        {
+            dm.startDialogue(dialogue, interactionPoint, interactor, radius);
+        }
     }
-
 }
