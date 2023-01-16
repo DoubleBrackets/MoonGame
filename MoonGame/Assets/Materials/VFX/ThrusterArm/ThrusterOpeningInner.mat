@@ -125,6 +125,7 @@ Material:
     - _GlossyReflections: 0
     - _MAIN_LIGHT_SHADOWS_CASCADE: 1
     - _Metallic: 0
+    - _NormalMapScale: 1
     - _NormalStrength: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -135,7 +136,7 @@ Material:
     - _Smoothness: 0.15
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularMultiplier: 1
+    - _SpecularMultiplier: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
@@ -146,5 +147,5 @@ Material:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.38768244, g: 0.66525435, b: 0.8301887, a: 1}
+    - _SpecularColor: {r: 0.38823527, g: 0.83137256, b: 0.5038464, a: 1}
   m_BuildTextureStacks: []

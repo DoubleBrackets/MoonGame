@@ -32,6 +32,7 @@ public class ProtagPhysicsState : MonoBehaviour
     public Vector3 CurrentVel => rb.velocity;
 
     public float VerticalSpeed => Mathf.Abs(Vector3.Dot(OrientationNormal, rb.velocity));
+    public float Speed => rb.velocity.magnitude;
 
     // Sticking info
     private Transform groundObjectTransform;
