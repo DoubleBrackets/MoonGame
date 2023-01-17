@@ -12,6 +12,7 @@ public class GravityBody : MonoBehaviour
     
     [ColorHeader("Dependencies")]
     [SerializeField] private Rigidbody targetRb;
+    [SerializeField] private bool autoFindRb;
 
     [ColorHeader("Debug")]
     [SerializeField, ReadOnly] private Vector3 currentGravityAccel;
@@ -25,6 +26,8 @@ public class GravityBody : MonoBehaviour
     private void OnEnable()
     {
         onBodyEnabled.Raise(this);
+        if (autoFindRb)
+            targetRb = GetComponent<Rigidbody>();
     }
     
     private void OnDisable()
