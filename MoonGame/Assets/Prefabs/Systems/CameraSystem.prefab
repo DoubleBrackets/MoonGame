@@ -1817,7 +1817,7 @@ GameObject:
   - component: {fileID: 1478108532}
   m_Layer: 0
   m_Name: CameraBrain
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2228,7 +2228,7 @@ Transform:
   - {fileID: 4474623872276981109}
   - {fileID: 116792061}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5856550122911054221
 GameObject:
