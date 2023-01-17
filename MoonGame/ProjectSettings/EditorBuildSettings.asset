@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGameScenes/Scene_Ingame.unity
     guid: abfd393ae9f634a21b05b81a2397ecdf
-  - enabled: 1
-    path: Assets/Scenes/ControllerTest.unity
-    guid: 9b500289363b6f74d84e8749525a329d
   m_configObjects: {}

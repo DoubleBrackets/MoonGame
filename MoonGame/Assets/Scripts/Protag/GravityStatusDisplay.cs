@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Febucci.UI;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class GravityStatusDisplay : MonoBehaviour
     
     [ColorHeader("Dependencies")]
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextAnimator animator;
 
     [ColorHeader("Config", ColorHeaderColor.Config)] 
     [SerializeField] private Color noGravColor;
@@ -46,5 +48,7 @@ public class GravityStatusDisplay : MonoBehaviour
         }
         str = str.Substring(1);
         text.text = str;
+        
+        animator.UpdateEffects();
     }
 }
