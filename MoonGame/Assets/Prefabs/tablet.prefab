@@ -207,7 +207,7 @@ Transform:
   - {fileID: 4852559951866165731}
   - {fileID: 7430653600002960524}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -0.643, y: 1.518, z: 12.988}
 --- !u!65 &2221410294649298493
 BoxCollider:
@@ -416,7 +416,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
